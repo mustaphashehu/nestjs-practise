@@ -5,8 +5,8 @@ export class CreatePropertyDto {
     @Length(4, 8, {groups: ["createw"]})
     name:string;
     @IsString()
-    skul:string;
+    description:string;
     @IsInt()
     @IsPositive()
-    area:number;
+    price:number;
 }
