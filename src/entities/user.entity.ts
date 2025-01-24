@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Property } from "./property.entity";
 
 @Entity()
@@ -26,5 +26,12 @@ export class User {
         (property) => property.user
     )
     property: Property[];
+
+    @ManyToMany(
+        () => Property,
+        (property) => property.likedBy
+    )
+    @JoinTable({name: "user_liked_properties"})
+    likedProperty: Property[]
 
 }
